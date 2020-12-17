@@ -44,7 +44,8 @@ class ViewController: UIViewController {
     //SKSceneの設定およびSKEmitterNodeの追加
     func setupParticle(size: CGSize){
         scene = SKScene(size: size)
-        scene.backgroundColor = UIColor.clear
+        //この色が背景色になる(背景画像を別途設定しなければ)
+        scene.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         
         //.sksファイルからSKEmitterNodeを作成
         let filePath = Bundle.main.path(forResource: "MyParticle", ofType: "sks")!
@@ -55,7 +56,6 @@ class ViewController: UIViewController {
         emitterParticleNode.name = "MyParticle"
         emitterParticleNode.position = CGPoint(x: size.width / 2, y: size.height)
         emitterParticleNode.particlePositionRange = CGVector(dx: scene.size.width, dy: 1)
-        emitterParticleNode.particleBlendMode = .add
         scene.addChild(emitterParticleNode)
         
         self.skView!.presentScene(scene)
